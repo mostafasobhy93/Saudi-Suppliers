@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="assets/css/vendors/bootstrap-tagsinput.css">
 
 	<!-- file-uploader.css -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.min.css" />
+	<link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.css">  
 
 	<!-- main css -->
 	<link href="assets/css/style.css" rel="stylesheet">
@@ -202,13 +202,20 @@
 						<!-- Attachment Tab -->
 						<div class="tab-pane fade" id="attachment" role="tabpanel">
 							<form class="main-form">
-								<!-- <input type="file" name="files" class="files"> -->
+								<div class="form-group mb-45">
+									<label class="form-label dark-color mb-3 fw-600">ارفع اللوجو الخاص بالشركة</label>
+									<input type="file" class="filepond" name="filepond">
+								</div>
+								<div class="form-group mb-45">
+									<label class="form-label dark-color mb-3 fw-600">ارفع البانر الخاص بالشركة</label>
+									<input type="file" class="filepond-banner" name="filepond-banner">
+								</div>
+								<div class="row justify-content-end">
+									<div class="col-md-6">
+										<button type="button" class="main-btn mt-4 w-100">حفظ</button>
+									</div>
+								</div>
 							</form>
-							<form action="/upload" class="dropzone" id="myDropzone">  
-								<div class="fallback">  
-										<input name="file" type="file" multiple/>  
-								</div>  
-						</form>  
 						</div>
 	
 					</div>
@@ -235,32 +242,32 @@
 	<script src="assets/js/vendors/bootstrap-tagsinput.min.js"></script>
 
 	<!--        File Uploader Js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
-	<script>  
-		// Disable autoDiscover, otherwise Dropzone will try to attach to all forms  
-		Dropzone.autoDiscover = false;  
+	<script src="https://unpkg.com/filepond/dist/filepond.js"></script>  
 
-		// Create a new Dropzone instance  
-		var myDropzone = new Dropzone("#myDropzone", {  
-				// Configuration options  
-				maxFilesize: 2, // MB  
-				acceptedFiles: "image/*", // Accept images only  
-				init: function() {  
-						this.on("addedfile", function(file) {  
-								console.log("File added: ", file);  
-						});  
-						this.on("success", function(file, response) {  
-								console.log("File successfully uploaded:", response);  
-						});  
-						this.on("error", function(file, errorMessage) {  
-								console.log("Error uploading file:", errorMessage);  
-						});  
-				}  
-		});  
-</script> 
-
+	
 	<!--        Main Js -->
 	<script src="assets/js/main.js"></script>
+
+	<script>
+		// Logo file
+		// FilePond.registerPlugin();
+		const inputElement = document.querySelector('.filepond');
+		const pond = FilePond.create(inputElement, {  
+			labelIdle: 'اسحب الصورة التى تريد اضافتها واسقطها هنا او قم بفتحها  <span class="filepond--label-action primary-color">من هنا</span>',  
+		});  
+		pond.setOptions({
+			maxFiles: 1
+		});
+
+		// banner file
+		const inputBanner = document.querySelector('.filepond-banner');
+		const pondBanner = FilePond.create(inputBanner, {  
+			labelIdle: 'اسحب الصورة التى تريد اضافتها واسقطها هنا او قم بفتحها  <span class="filepond--label-action primary-color">من هنا</span>',  
+		});  
+		pond.setOptions({
+			maxFiles: 1
+		});
+	</script>
 
 </body>
 

@@ -93,7 +93,7 @@ a:focus {
     font-weight: 500;
 }
 .shadow {
-    box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.25) !important;
 }
 .rounded-lg {
     border-radius: 1rem !important;
@@ -854,41 +854,12 @@ header nav .nav-account .account .dropdown-menu li a i {
     padding-right: .5rem;
 }
 
-/*** File Uploader ***/
-#image-preview {
-    width: 6.25rem;
-    height: 6.25rem;
-    position: relative;
-    overflow: hidden;
-    background-color: #ffffff;
-    background-image: url(../img/default-avatar.png);
-    background-position: center;
-    background-size: cover;
-    color: #ecf0f1;
-    border-radius: 50%;
+/*** Filepond ***/
+.filepond--root {
+    font-family: 'Cairo', sans-serif !important;
 }
-#image-preview input {
-    line-height: 200px;
-    font-size: 200px;
-    position: absolute;
-    opacity: 0;
-    z-index: 10;
-    display: none;
-}
-#image-preview label {
-    position: absolute;
-    z-index: 5;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.50);
-    width: 100%;
-    height: 2rem;
-    font-size: 1.25rem;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    text-align: center;
+.filepond--root .filepond--credits[style] {
+    display: none !important;
 }
 
 /*** Tags Input ***/
@@ -1690,5 +1661,11 @@ footer .copyrights {
     }
     .dashboard-wrapper .dashboard-content .content-box .box-header .services-filter .form-group .form-select {
         width: 100%;
+    }
+    .def-tabs.nav-tabs {
+        gap: .5rem;
+    }
+    .company-data .def-tabs.nav-tabs .nav-item .nav-link {
+        padding: .75rem 1rem;
     }
 }
